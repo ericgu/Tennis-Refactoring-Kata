@@ -1,3 +1,4 @@
+using System;
 using System.Data.SqlClient;
 
 namespace Tennis
@@ -25,31 +26,28 @@ namespace Tennis
 
         public string GetScore()
         {
-            string score = "";
-            var tempScore = 0;
-            string score1;
-            score1 = EvenScore();
-            if (score1 != null)
-            {
-                return score1;
-            }
-
-            score1 = ScoreAdvantage();
-            if (score1 != null)
-            {
-                return score1;
-            }
-
-            score1 = ScoreWin();
-            if (score1 != null)
-            {
-                return score1;
-            }
-
-            return NormalScore(score);
+            return GetScoreFromRules(
+                EvenScore,
+                ScoreAdvantage,
+                ScoreWin,
+                NormalScore);
         }
 
-        private string NormalScore(string score)
+        public string GetScoreFromRules(params Func<string>[] rules)
+        {
+            foreach (Func<string> rule in rules)
+            {
+                string score = rule();
+                if (score != null)
+                {
+                    return score;
+                }
+            }
+
+            return "Score Error";
+        }
+
+        private string NormalScore()
         {
             return GetScoreWord(m_score1) + "-" + GetScoreWord(m_score2);
         }
