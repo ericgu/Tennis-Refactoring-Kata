@@ -9,19 +9,20 @@ namespace Tennis
         private int m_score2 = 0;
         private string player1Name;
         private string player2Name;
-        private IScoreRule[] _rules;
+        private ScoreRuleChain _scoreRuleChain;
 
         public TennisGame1(string player1Name, string player2Name)
         {
             this.player1Name = player1Name;
             this.player2Name = player2Name;
-            _rules = new IScoreRule[]
+
+            _scoreRuleChain = new ScoreRuleChain(new IScoreRule[]
             {
                 new ScoreRuleEven(),
                 new ScoreRuleAdvantage(),
                 new ScoreRuleWin(),
                 new ScoreRuleNormal()
-            };
+            });
         }
 
         public void WonPoint(string playerName)
@@ -34,16 +35,7 @@ namespace Tennis
 
         public string GetScore()
         {
-            foreach (IScoreRule rule in _rules)
-            {
-                string score = rule.Evaluate(m_score1, m_score2);
-                if (score != null)
-                {
-                    return score;
-                }
-            }
-
-            return "Score Error";
+            return _scoreRuleChain.Evaluate(m_score2, m_score1);
         }
     }
 }
