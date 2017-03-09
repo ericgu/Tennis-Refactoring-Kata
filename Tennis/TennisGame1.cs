@@ -27,10 +27,10 @@ namespace Tennis
         public string GetScore()
         {
             return GetScoreFromRules(
-                EvenScore,
-                ScoreAdvantage,
-                ScoreWin,
-                NormalScore);
+                () => ScoreRuleEven(m_score2, m_score1),
+                () => ScoreRuleAdvantage(m_score2, m_score1),
+                () => ScoreRuleWin(m_score2, m_score1),
+                () => ScoreRuleNormal(m_score2, m_score1));
         }
 
         public string GetScoreFromRules(params Func<string>[] rules)
@@ -47,9 +47,9 @@ namespace Tennis
             return "Score Error";
         }
 
-        private string NormalScore()
+        private static string ScoreRuleNormal(int mScore2, int mScore1)
         {
-            return GetScoreWord(m_score1) + "-" + GetScoreWord(m_score2);
+            return GetScoreWord(mScore1) + "-" + GetScoreWord(mScore2);
         }
 
         private static string GetScoreWord(int tempScore)
@@ -73,12 +73,12 @@ namespace Tennis
             return word;
         }
 
-        private string ScoreWin()
+        private static string ScoreRuleWin(int mScore2, int mScore1)
         {
             string score;
-            if (m_score1 >= 4 || m_score2 >= 4)
+            if (mScore1 >= 4 || mScore2 >= 4)
             {
-                var minusResult = m_score1 - m_score2;
+                var minusResult = mScore1 - mScore2;
                 if (minusResult >= 2) score = "Win for player1";
                 else score = "Win for player2";
 
@@ -87,12 +87,12 @@ namespace Tennis
             return null;
         }
 
-        private string ScoreAdvantage()
+        private static string ScoreRuleAdvantage(int mScore2, int mScore1)
         {
             string score = null;
-            if (m_score1 >= 4 || m_score2 >= 4)
+            if (mScore1 >= 4 || mScore2 >= 4)
             {
-                var minusResult = m_score1 - m_score2;
+                var minusResult = mScore1 - mScore2;
                 if (minusResult == 1) score = "Advantage player1";
                 else if (minusResult == -1) score = "Advantage player2";
 
@@ -101,16 +101,16 @@ namespace Tennis
             return null;
         }
 
-        private string EvenScore()
+        private static string ScoreRuleEven(int mScore2, int mScore1)
         {
-            if (m_score1 == m_score2)
+            if (mScore1 == mScore2)
             {
-                if (m_score1 == 3)
+                if (mScore1 == 3)
                 {
                     return "Deuce";
                 }
 
-                return GetScoreWord(m_score1) + "-All";
+                return GetScoreWord(mScore1) + "-All";
             }
 
             return null;
