@@ -1,6 +1,6 @@
-static internal class ScoreRuleAdvantage
+internal class ScoreRuleAdvantage
 {
-    public static string Evaluate(int mScore2, int mScore1)
+    public static string Evaluate(int mScore2, int mScore1, ScoreRuleAdvantage that)
     {
         string score = null;
         if (mScore1 >= 4 || mScore2 >= 4)
