@@ -45,21 +45,7 @@ namespace Tennis
 
         private string NormalScore(string score)
         {
-            int tempScore;
-            {
-                for (var i = 1; i < 3; i++)
-                {
-                    if (i == 1) tempScore = m_score1;
-                    else
-                    {
-                        score += "-";
-                        tempScore = m_score2;
-                    }
-                    var word = GetScoreWord(tempScore);
-                    score = score + word;
-                }
-            }
-            return score;
+            return GetScoreWord(m_score1) + "-" + GetScoreWord(m_score2);
         }
 
         private static string GetScoreWord(int tempScore)
