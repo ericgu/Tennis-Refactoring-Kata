@@ -34,8 +34,11 @@ namespace Tennis
                 return score1;
             }
 
-            string s1;
-            if (ScoreBiggerThan4(out s1)) return s1;
+            score1 = ScoreBiggerThan4();
+            if (score1 != null)
+            {
+                return score1;
+            }
 
             return NormalScore(score);
         }
@@ -72,7 +75,7 @@ namespace Tennis
             return score;
         }
 
-        private bool ScoreBiggerThan4(out string s1)
+        private string ScoreBiggerThan4()
         {
             string score;
             if (m_score1 >= 4 || m_score2 >= 4)
@@ -83,13 +86,9 @@ namespace Tennis
                 else if (minusResult >= 2) score = "Win for player1";
                 else score = "Win for player2";
 
-                {
-                    s1 = score;
-                    return true;
-                }
+                return score;
             }
-            s1 = null;
-            return false;
+            return null;
         }
 
         private string EvenScore()
