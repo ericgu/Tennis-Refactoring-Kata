@@ -1,4 +1,4 @@
-internal class ScoreRuleAdvantage
+internal class ScoreRuleAdvantage : IScoreRule
 {
     public string Evaluate(int mScore2, int mScore1)
     {

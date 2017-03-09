@@ -1,4 +1,4 @@
-internal class ScoreRuleNormal
+internal class ScoreRuleNormal : IScoreRule
 {
     public string Evaluate(int mScore2, int mScore1)
     {
