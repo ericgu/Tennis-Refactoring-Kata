@@ -34,12 +34,7 @@ namespace Tennis
 
         public string GetScore()
         {
-            return GetScoreFromRules(_rules);
-        }
-
-        public string GetScoreFromRules(params IScoreRule[] rules)
-        {
-            foreach (IScoreRule rule in rules)
+            foreach (IScoreRule rule in _rules)
             {
                 string score = rule.Evaluate(m_score2, m_score1);
                 if (score != null)
