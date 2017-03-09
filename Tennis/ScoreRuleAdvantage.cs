@@ -1,6 +1,6 @@
 internal class ScoreRuleAdvantage : IScoreRule
 {
-    public string Evaluate(int mScore2, int mScore1)
+    public string Evaluate(int mScore1, int mScore2)
     {
         string score = null;
         if (mScore1 >= 4 || mScore2 >= 4)

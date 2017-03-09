@@ -1,4 +1,4 @@
 internal interface IScoreRule
 {
-    string Evaluate(int mScore2, int mScore1);
+    string Evaluate(int mScore1, int mScore2);
 }

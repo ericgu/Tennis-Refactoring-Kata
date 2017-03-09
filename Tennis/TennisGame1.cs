@@ -36,7 +36,7 @@ namespace Tennis
         {
             foreach (IScoreRule rule in _rules)
             {
-                string score = rule.Evaluate(m_score2, m_score1);
+                string score = rule.Evaluate(m_score1, m_score2);
                 if (score != null)
                 {
                     return score;
