@@ -49,28 +49,7 @@ namespace Tennis
 
         private static string ScoreRuleNormal(int mScore2, int mScore1)
         {
-            return GetScoreWord(mScore1) + "-" + GetScoreWord(mScore2);
-        }
-
-        private static string GetScoreWord(int tempScore)
-        {
-            string word = string.Empty;
-            switch (tempScore)
-            {
-                case 0:
-                    word = "Love";
-                    break;
-                case 1:
-                    word = "Fifteen";
-                    break;
-                case 2:
-                    word = "Thirty";
-                    break;
-                case 3:
-                    word = "Forty";
-                    break;
-            }
-            return word;
+            return ScoreWords.GetScoreWord(mScore1) + "-" + ScoreWords.GetScoreWord(mScore2);
         }
 
         private static string ScoreRuleWin(int mScore2, int mScore1)
@@ -110,7 +89,7 @@ namespace Tennis
                     return "Deuce";
                 }
 
-                return GetScoreWord(mScore1) + "-All";
+                return ScoreWords.GetScoreWord(mScore1) + "-All";
             }
 
             return null;
