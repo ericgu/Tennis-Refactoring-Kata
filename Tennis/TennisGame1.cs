@@ -34,7 +34,7 @@ namespace Tennis
                 return score1;
             }
 
-            score1 = ScoreBiggerThan4();
+            score1 = ScoreBiggerThan4B();
             if (score1 != null)
             {
                 return score1;
@@ -69,19 +69,12 @@ namespace Tennis
             return word;
         }
 
-        private string ScoreBiggerThan4()
+        private string ScoreBiggerThan4B()
         {
-            string score = null;
-            if (m_score1 >= 4 || m_score2 >= 4)
+            string score = ScoreAdvantage();
+            if (score != null)
             {
-                var minusResult = m_score1 - m_score2;
-                if (minusResult == 1) score = "Advantage player1";
-                else if (minusResult == -1) score = "Advantage player2";
-
-                if (score != null)
-                {
-                    return score;
-                }
+                return score;
             }
 
             if (m_score1 >= 4 || m_score2 >= 4)
@@ -89,6 +82,20 @@ namespace Tennis
                 var minusResult = m_score1 - m_score2;
                 if (minusResult >= 2) score = "Win for player1";
                 else score = "Win for player2";
+
+                return score;
+            }
+            return null;
+        }
+
+        private string ScoreAdvantage()
+        {
+            string score = null;
+            if (m_score1 >= 4 || m_score2 >= 4)
+            {
+                var minusResult = m_score1 - m_score2;
+                if (minusResult == 1) score = "Advantage player1";
+                else if (minusResult == -1) score = "Advantage player2";
 
                 return score;
             }
