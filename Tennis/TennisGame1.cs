@@ -9,11 +9,19 @@ namespace Tennis
         private int m_score2 = 0;
         private string player1Name;
         private string player2Name;
+        private IScoreRule[] _rules;
 
         public TennisGame1(string player1Name, string player2Name)
         {
             this.player1Name = player1Name;
             this.player2Name = player2Name;
+            _rules = new IScoreRule[]
+            {
+                new ScoreRuleEven(),
+                new ScoreRuleAdvantage(),
+                new ScoreRuleWin(),
+                new ScoreRuleNormal()
+            };
         }
 
         public void WonPoint(string playerName)
@@ -26,15 +34,7 @@ namespace Tennis
 
         public string GetScore()
         {
-            IScoreRule[] rules = new IScoreRule[]
-            {
-                new ScoreRuleEven(),
-                new ScoreRuleAdvantage(),
-                new ScoreRuleWin(),
-                new ScoreRuleNormal()
-            };
-
-            return GetScoreFromRules(rules);
+            return GetScoreFromRules(_rules);
         }
 
         public string GetScoreFromRules(params IScoreRule[] rules)
