@@ -1,3 +1,5 @@
+using System.Data.SqlClient;
+
 namespace Tennis
 {
     class TennisGame1 : ITennisGame
@@ -26,7 +28,11 @@ namespace Tennis
             string score = "";
             var tempScore = 0;
             string score1;
-            if (EvenScore(out score1)) return score1;
+            score1 = EvenScore();
+            if (score1 != null)
+            {
+                return score1;
+            }
 
             string s1;
             if (ScoreBiggerThan4(out s1)) return s1;
@@ -82,10 +88,11 @@ namespace Tennis
                     return true;
                 }
             }
+            s1 = null;
             return false;
         }
 
-        private bool EvenScore(out string score1)
+        private string EvenScore()
         {
             string score;
             if (m_score1 == m_score2)
@@ -105,12 +112,10 @@ namespace Tennis
                         score = "Deuce";
                         break;
                 }
-                {
-                    score1 = score;
-                    return true;
-                }
+
+                return score;
             }
-            return false;
+            return null;
         }
     }
 }
