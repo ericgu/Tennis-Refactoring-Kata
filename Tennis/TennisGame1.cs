@@ -27,10 +27,10 @@ namespace Tennis
         public string GetScore()
         {
             return GetScoreFromRules(
-                () => ScoreRuleEven.Evaluate(m_score2, m_score1, new ScoreRuleEven()),
-                () => ScoreRuleAdvantage.Evaluate(m_score2, m_score1, new ScoreRuleAdvantage()),
-                () => ScoreRuleWin.Evaluate(m_score2, m_score1, new ScoreRuleWin()),
-                () => ScoreRuleNormal.Evaluate(m_score2, m_score1, new ScoreRuleNormal()));
+                () => new ScoreRuleEven().Evaluate(m_score2, m_score1),
+                () => new ScoreRuleAdvantage().Evaluate(m_score2, m_score1),
+                () => new ScoreRuleWin().Evaluate(m_score2, m_score1),
+                () => new ScoreRuleNormal().Evaluate(m_score2, m_score1));
         }
 
         public string GetScoreFromRules(params Func<string>[] rules)
