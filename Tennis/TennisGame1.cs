@@ -55,24 +55,31 @@ namespace Tennis
                         score += "-";
                         tempScore = m_score2;
                     }
-                    switch (tempScore)
-                    {
-                        case 0:
-                            score += "Love";
-                            break;
-                        case 1:
-                            score += "Fifteen";
-                            break;
-                        case 2:
-                            score += "Thirty";
-                            break;
-                        case 3:
-                            score += "Forty";
-                            break;
-                    }
+                    score = GetScoreWord(score, tempScore);
                 }
             }
             return score;
+        }
+
+        private static string GetScoreWord(string score, int tempScore)
+        {
+            string word = string.Empty;
+            switch (tempScore)
+            {
+                case 0:
+                    word = "Love";
+                    break;
+                case 1:
+                    word = "Fifteen";
+                    break;
+                case 2:
+                    word = "Thirty";
+                    break;
+                case 3:
+                    word = "Forty";
+                    break;
+            }
+            return score + word;
         }
 
         private string ScoreBiggerThan4()
