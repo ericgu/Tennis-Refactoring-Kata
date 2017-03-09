@@ -26,11 +26,15 @@ namespace Tennis
 
         public string GetScore()
         {
-            return GetScoreFromRules(
+            IScoreRule[] rules = new IScoreRule[]
+            {
                 new ScoreRuleEven(),
                 new ScoreRuleAdvantage(),
                 new ScoreRuleWin(),
-                new ScoreRuleNormal());
+                new ScoreRuleNormal()
+            };
+
+            return GetScoreFromRules(rules);
         }
 
         public string GetScoreFromRules(params IScoreRule[] rules)
