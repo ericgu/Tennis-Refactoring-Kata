@@ -55,13 +55,14 @@ namespace Tennis
                         score += "-";
                         tempScore = m_score2;
                     }
-                    score = GetScoreWord(score, tempScore);
+                    var word = GetScoreWord(tempScore);
+                    score = score + word;
                 }
             }
             return score;
         }
 
-        private static string GetScoreWord(string score, int tempScore)
+        private static string GetScoreWord(int tempScore)
         {
             string word = string.Empty;
             switch (tempScore)
@@ -79,7 +80,7 @@ namespace Tennis
                     word = "Forty";
                     break;
             }
-            return score + word;
+            return word;
         }
 
         private string ScoreBiggerThan4()
