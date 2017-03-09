@@ -77,6 +77,17 @@ namespace Tennis
                 return score;
             }
 
+            score = ScoreWin();
+            if (score != null)
+            {
+                return score;
+
+            }
+        }
+
+        private string ScoreWin()
+        {
+            string score;
             if (m_score1 >= 4 || m_score2 >= 4)
             {
                 var minusResult = m_score1 - m_score2;
