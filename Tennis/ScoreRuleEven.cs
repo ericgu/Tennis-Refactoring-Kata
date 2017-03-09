@@ -1,6 +1,6 @@
 static internal class ScoreRuleEven
 {
-    public static string ScoreRuleEvenFunc(int mScore2, int mScore1)
+    public static string Evaluate(int mScore2, int mScore1)
     {
         if (mScore1 == mScore2)
         {
