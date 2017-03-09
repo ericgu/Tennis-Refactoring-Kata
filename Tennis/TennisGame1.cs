@@ -34,7 +34,13 @@ namespace Tennis
                 return score1;
             }
 
-            score1 = ScoreBiggerThan4B();
+            score1 = ScoreAdvantage();
+            if (score1 != null)
+            {
+                return score1;
+            }
+
+            score1 = ScoreWin();
             if (score1 != null)
             {
                 return score1;
@@ -67,22 +73,6 @@ namespace Tennis
                     break;
             }
             return word;
-        }
-
-        private string ScoreBiggerThan4B()
-        {
-            string score = ScoreAdvantage();
-            if (score != null)
-            {
-                return score;
-            }
-
-            score = ScoreWin();
-            if (score != null)
-            {
-                return score;
-
-            }
         }
 
         private string ScoreWin()
