@@ -17,5 +17,19 @@ namespace Tennis
         {
             
         }
+
+        public Player FindPlayerByName(string playerName)
+        {
+            Player currentPlayer;
+            if (playerName == Player1.Name)
+            {
+                currentPlayer = Player1;
+            }
+            else
+            {
+                currentPlayer = Player2;
+            }
+            return currentPlayer;
+        }
     }
 }
