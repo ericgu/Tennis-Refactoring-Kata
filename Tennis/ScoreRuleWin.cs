@@ -4,16 +4,22 @@ namespace Tennis
     {
         public string Evaluate(Player player1, Player player2)
         {
-            string score;
-            if (player1.Score >= 4 || player2.Score >= 4)
+            if (CheckForWin(player1, player2))
             {
-                var minusResult = player1.Score - player2.Score;
-                if (minusResult >= 2) score = "Win for " + player1.Name;
-                else score = "Win for " + player2.Name;
-
-                return score;
+                return "Win for " + player1.Name;
             }
+
+            if (CheckForWin(player2, player1))
+            {
+                return "Win for " + player2.Name;
+            }
+
             return null;
+        }
+
+        private static bool CheckForWin(Player player1, Player player2)
+        {
+            return player1.Score >= 4 && player1.Score - player2.Score >= 2;
         }
     }
 }
