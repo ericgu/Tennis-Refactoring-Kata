@@ -19,7 +19,7 @@ namespace Tennis
 
         private static bool CheckForWin(Player player, Player otherPlayer)
         {
-            return player.Score.Value >= 4 && player.Score.Value - otherPlayer.Score.Value >= 2;
+            return player.Score >= 4 && player.Score - otherPlayer.Score >= 2;
         }
     }
 }

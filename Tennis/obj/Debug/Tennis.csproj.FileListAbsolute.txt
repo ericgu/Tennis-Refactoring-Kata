@@ -1,14 +1,7 @@
+C:\Users\ericgu\Source\Repos\Tennis-Refactoring-Kata\Tennis\obj\Debug\Tennis.csprojResolveAssemblyReference.cache
 C:\Users\ericgu\Source\Repos\Tennis-Refactoring-Kata\Tennis\bin\Debug\Tennis.dll
 C:\Users\ericgu\Source\Repos\Tennis-Refactoring-Kata\Tennis\bin\Debug\Tennis.pdb
 C:\Users\ericgu\Source\Repos\Tennis-Refactoring-Kata\Tennis\bin\Debug\nunit.framework.dll
 C:\Users\ericgu\Source\Repos\Tennis-Refactoring-Kata\Tennis\bin\Debug\nunit.framework.xml
-C:\Users\ericgu\Source\Repos\Tennis-Refactoring-Kata\Tennis\obj\Debug\Tennis.csprojResolveAssemblyReference.cache
 C:\Users\ericgu\Source\Repos\Tennis-Refactoring-Kata\Tennis\obj\Debug\Tennis.dll
 C:\Users\ericgu\Source\Repos\Tennis-Refactoring-Kata\Tennis\obj\Debug\Tennis.pdb
-C:\Users\eric_\Source\Repos\Tennis-Refactoring-Kata\Tennis\bin\Debug\Tennis.dll
-C:\Users\eric_\Source\Repos\Tennis-Refactoring-Kata\Tennis\bin\Debug\Tennis.pdb
-C:\Users\eric_\Source\Repos\Tennis-Refactoring-Kata\Tennis\bin\Debug\nunit.framework.dll
-C:\Users\eric_\Source\Repos\Tennis-Refactoring-Kata\Tennis\bin\Debug\nunit.framework.xml
-C:\Users\eric_\Source\Repos\Tennis-Refactoring-Kata\Tennis\obj\Debug\Tennis.csprojResolveAssemblyReference.cache
-C:\Users\eric_\Source\Repos\Tennis-Refactoring-Kata\Tennis\obj\Debug\Tennis.dll
-C:\Users\eric_\Source\Repos\Tennis-Refactoring-Kata\Tennis\obj\Debug\Tennis.pdb
