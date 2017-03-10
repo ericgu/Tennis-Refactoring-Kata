@@ -48,6 +48,7 @@
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ITennisGame.cs" />
+    <Compile Include="Score.cs" />
     <Compile Include="ScoreRuleAdvantageTests.cs" />
     <Compile Include="ScoreRuleAdvantage.cs" />
     <Compile Include="ScoreRuleChain.cs" />

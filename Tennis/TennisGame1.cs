@@ -22,7 +22,7 @@ namespace Tennis
         {
             var currentPlayer = _gameState.FindPlayerByName(playerName);
 
-            currentPlayer.Score++;
+            currentPlayer.Score.Value++;
         }
 
 

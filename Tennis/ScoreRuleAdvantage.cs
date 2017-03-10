@@ -19,7 +19,7 @@ namespace Tennis
 
         private static bool InAdvantageAndUpByOne(Player player1, Player player2)
         {
-            return player1.Score >= 4 && player1.Score - player2.Score == 1;
+            return player1.Score.Value >= 4 && player1.Score.Value - player2.Score.Value == 1;
         }
     }
 }

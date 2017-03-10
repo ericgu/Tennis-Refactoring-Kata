@@ -33,8 +33,8 @@ namespace Tennis
         {
             GameState gameState = new GameState("Fred", "Barney");
 
-            gameState.Player1.Score = player1Score;
-            gameState.Player2.Score = player2Score;
+            gameState.Player1.Score.Value = player1Score;
+            gameState.Player2.Score.Value = player2Score;
 
             return new ScoreRuleAdvantage().Evaluate(gameState);
         }
