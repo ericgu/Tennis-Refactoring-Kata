@@ -2,7 +2,7 @@ namespace Tennis
 {
     internal class ScoreRuleWin : IScoreRule
     {
-        public string Evaluate(Player player1, Player player2)
+        public string GetScore(Player player1, Player player2)
         {
             if (CheckForWin(player1, player2))
             {

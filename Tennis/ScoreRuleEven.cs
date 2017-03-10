@@ -2,7 +2,7 @@ namespace Tennis
 {
     internal class ScoreRuleEven : IScoreRule
     {
-        public string Evaluate(Player player1, Player player2)
+        public string GetScore(Player player1, Player player2)
         {
             if (player1.Points == player2.Points)
             {

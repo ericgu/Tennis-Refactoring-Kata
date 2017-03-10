@@ -36,7 +36,7 @@ namespace Tennis
             gameState.Player1.Points = player1Score;
             gameState.Player2.Points = player2Score;
 
-            return new ScoreRuleAdvantage().Evaluate(gameState.Player1, gameState.Player2);
+            return new ScoreRuleAdvantage().GetScore(gameState.Player1, gameState.Player2);
         }
     }
 }

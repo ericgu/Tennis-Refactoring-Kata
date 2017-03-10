@@ -4,9 +4,9 @@ namespace Tennis
     {
         private readonly ScoreRuleChain _scoreRuleChain;
 
-        public Player Player1 { set; get; }
+        public Player Player1 { get; }
 
-        public Player Player2 { set; get; }
+        public Player Player2 { get; }
 
         public GameState(string player1Name, string player2Name)
         {
