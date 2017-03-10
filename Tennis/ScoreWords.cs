@@ -1,25 +1,28 @@
 using System;
 
-static internal class ScoreWords
+namespace Tennis
 {
-    public static string GetScoreWord(int tempScore)
+    internal static class ScoreWords
     {
-        string word = String.Empty;
-        switch (tempScore)
+        public static string GetScoreWord(int tempScore)
         {
-            case 0:
-                word = "Love";
-                break;
-            case 1:
-                word = "Fifteen";
-                break;
-            case 2:
-                word = "Thirty";
-                break;
-            case 3:
-                word = "Forty";
-                break;
+            string word = String.Empty;
+            switch (tempScore)
+            {
+                case 0:
+                    word = "Love";
+                    break;
+                case 1:
+                    word = "Fifteen";
+                    break;
+                case 2:
+                    word = "Thirty";
+                    break;
+                case 3:
+                    word = "Forty";
+                    break;
+            }
+            return word;
         }
-        return word;
     }
 }

@@ -1,25 +1,26 @@
-using Tennis;
-
-internal class ScoreRuleChain
+namespace Tennis
 {
-    private readonly IScoreRule[] _scoreRules;
-
-    public ScoreRuleChain(IScoreRule[] scoreRules)
+    internal class ScoreRuleChain
     {
-        _scoreRules = scoreRules;
-    }
+        private readonly IScoreRule[] _scoreRules;
 
-    public string Evaluate(Player player1, Player player2)
-    {
-        foreach (IScoreRule rule in _scoreRules)
+        public ScoreRuleChain(IScoreRule[] scoreRules)
         {
-            string score = rule.Evaluate(player1, player2);
-            if (score != null)
-            {
-                return score;
-            }
+            _scoreRules = scoreRules;
         }
 
-        return "Score Error";
+        public string Evaluate(Player player1, Player player2)
+        {
+            foreach (IScoreRule rule in _scoreRules)
+            {
+                string score = rule.Evaluate(player1, player2);
+                if (score != null)
+                {
+                    return score;
+                }
+            }
+
+            return "Score Error";
+        }
     }
 }

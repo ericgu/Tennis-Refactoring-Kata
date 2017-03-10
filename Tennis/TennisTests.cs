@@ -38,15 +38,15 @@ namespace Tennis
     [TestFixture(14, 16, "Win for player2")]
     public class TennisTests
     {
-        private readonly int player1Score;
-        private readonly int player2Score;
-        private readonly string expectedScore;
+        private readonly int _player1Score;
+        private readonly int _player2Score;
+        private readonly string _expectedScore;
 
         public TennisTests(int player1Score, int player2Score, string expectedScore)
         {
-            this.player1Score = player1Score;
-            this.player2Score = player2Score;
-            this.expectedScore = expectedScore;
+            _player1Score = player1Score;
+            _player2Score = player2Score;
+            _expectedScore = expectedScore;
         }
 
         [Test]
@@ -58,15 +58,15 @@ namespace Tennis
 
         private void CheckAllScores(ITennisGame game)
         {
-            var highestScore = Math.Max(this.player1Score, this.player2Score);
+            var highestScore = Math.Max(_player1Score, _player2Score);
             for (var i = 0; i < highestScore; i++)
             {
-                if (i < this.player1Score)
+                if (i < _player1Score)
                     game.WonPoint("player1");
-                if (i < this.player2Score)
+                if (i < _player2Score)
                     game.WonPoint("player2");
             }
-            Assert.AreEqual(this.expectedScore, game.GetScore());
+            Assert.AreEqual(_expectedScore, game.GetScore());
         }
 
     }

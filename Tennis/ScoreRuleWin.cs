@@ -1,18 +1,19 @@
-using Tennis;
-
-internal class ScoreRuleWin : IScoreRule
+namespace Tennis
 {
-    public string Evaluate(Player player1, Player player2)
+    internal class ScoreRuleWin : IScoreRule
     {
-        string score;
-        if (player1.Score >= 4 || player2.Score >= 4)
+        public string Evaluate(Player player1, Player player2)
         {
-            var minusResult = player1.Score - player2.Score;
-            if (minusResult >= 2) score = "Win for " + player1.Name;
-            else score = "Win for " + player2.Name;
+            string score;
+            if (player1.Score >= 4 || player2.Score >= 4)
+            {
+                var minusResult = player1.Score - player2.Score;
+                if (minusResult >= 2) score = "Win for " + player1.Name;
+                else score = "Win for " + player2.Name;
 
-            return score;
+                return score;
+            }
+            return null;
         }
-        return null;
     }
 }
