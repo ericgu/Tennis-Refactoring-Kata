@@ -19,8 +19,8 @@ namespace Tennis
             _scoreRuleChain = new ScoreRuleChain(new IScoreRule[]
             {
                 new ScoreRuleEven(),
-                new ScoreRuleAdvantage(),
-                new ScoreRuleWin(),
+                new ScoreRuleAdvantage("player1", "player2"),
+                new ScoreRuleWin("player1", "player2"),
                 new ScoreRuleNormal()
             });
         }
