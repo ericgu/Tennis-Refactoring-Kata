@@ -14,15 +14,15 @@ namespace Tennis
             _scoreRuleChain = new ScoreRuleChain(new IScoreRule[]
             {
                 new ScoreRuleEven(),
-                new ScoreRuleAdvantage(player1Name, player2Name),
-                new ScoreRuleWin(player1Name, player2Name),
+                new ScoreRuleAdvantage(),
+                new ScoreRuleWin(),
                 new ScoreRuleNormal()
             });
         }
 
         public void WonPoint(string playerName)
         {
-            if (playerName == _player1.Player1Name)
+            if (playerName == _player1.Name)
                 Player.WonPoint(_player1);
             else
                 Player.WonPoint(_player2);

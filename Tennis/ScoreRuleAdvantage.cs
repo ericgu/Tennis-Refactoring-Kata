@@ -2,15 +2,6 @@ namespace Tennis
 {
     internal class ScoreRuleAdvantage : IScoreRule
     {
-        private readonly string _player1Name;
-        private readonly string _player2Name;
-
-        public ScoreRuleAdvantage(string player1Name, string player2Name)
-        {
-            _player1Name = player1Name;
-            _player2Name = player2Name;
-        }
-
         public string Evaluate(Player player1, Player player2)
         {
             int mScore1 = player1.Score;
@@ -19,8 +10,8 @@ namespace Tennis
             if (mScore1 >= 4 || mScore2 >= 4)
             {
                 var minusResult = mScore1 - mScore2;
-                if (minusResult == 1) score = "Advantage " + _player1Name;
-                else if (minusResult == -1) score = "Advantage " + _player2Name;
+                if (minusResult == 1) score = "Advantage " + player1.Name;
+                else if (minusResult == -1) score = "Advantage " + player2.Name;
 
                 return score;
             }
