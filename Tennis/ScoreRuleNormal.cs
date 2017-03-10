@@ -2,9 +2,9 @@ namespace Tennis
 {
     internal class ScoreRuleNormal : IScoreRule
     {
-        public string Evaluate(Player player1, Player player2)
+        public string Evaluate(GameState gameState)
         {
-            return ScoreWords.GetScoreWord(player1.Score) + "-" + ScoreWords.GetScoreWord(player2.Score);
+            return ScoreWords.GetScoreWord(gameState.Player1.Score) + "-" + ScoreWords.GetScoreWord(gameState.Player2.Score);
         }
     }
 }

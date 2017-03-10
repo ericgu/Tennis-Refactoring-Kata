@@ -22,13 +22,13 @@ namespace Tennis
         {
             var currentPlayer = _gameState.FindPlayerByName(playerName);
 
-            currentPlayer.WonPoint();
+            currentPlayer.Score++;
         }
 
 
         public string GetScore()
         {
-            return _scoreRuleChain.Evaluate(_gameState.Player1, _gameState.Player2);
+            return _scoreRuleChain.Evaluate(_gameState);
         }
     }
 }

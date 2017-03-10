@@ -10,11 +10,6 @@ namespace Tennis
         public int Score { set; get; }
 
         public string Name { set; get; }
-
-        public void WonPoint()
-        {
-            Score++;
-        }
     }
 }
 

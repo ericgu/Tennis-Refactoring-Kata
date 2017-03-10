@@ -2,6 +2,6 @@ namespace Tennis
 {
     internal interface IScoreRule
     {
-        string Evaluate(Player player1, Player player2);
+        string Evaluate(GameState gameState);
     }
 }
