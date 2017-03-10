@@ -2,16 +2,16 @@ namespace Tennis
 {
     internal class ScoreRuleEven : IScoreRule
     {
-        public string Evaluate(GameState gameState)
+        public string Evaluate(Player player1, Player player2)
         {
-            if (gameState.Player1.Score.Value == gameState.Player2.Score.Value)
+            if (player1.Score.Value == player2.Score.Value)
             {
-                if (gameState.Player1.Score.Value >= 3)
+                if (player1.Score.Value >= 3)
                 {
                     return "Deuce";
                 }
 
-                return gameState.Player1.Score.ScoreWord + "-All";
+                return player1.Score.ScoreWord + "-All";
             }
 
             return null;

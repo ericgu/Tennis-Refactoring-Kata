@@ -2,16 +2,16 @@ namespace Tennis
 {
     internal class ScoreRuleWin : IScoreRule
     {
-        public string Evaluate(GameState gameState)
+        public string Evaluate(Player player1, Player player2)
         {
-            if (CheckForWin(gameState.Player1, gameState.Player2))
+            if (CheckForWin(player1, player2))
             {
-                return "Win for " + gameState.Player1.Name;
+                return "Win for " + player1.Name;
             }
 
-            if (CheckForWin(gameState.Player2, gameState.Player1))
+            if (CheckForWin(player2, player1))
             {
-                return "Win for " + gameState.Player2.Name;
+                return "Win for " + player2.Name;
             }
 
             return null;

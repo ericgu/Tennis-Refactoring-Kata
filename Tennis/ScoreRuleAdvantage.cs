@@ -2,16 +2,16 @@ namespace Tennis
 {
     internal class ScoreRuleAdvantage : IScoreRule
     {
-        public string Evaluate(GameState gameState)
+        public string Evaluate(Player player1, Player player2)
         {
-            if (InAdvantageAndUpByOne(gameState.Player1, gameState.Player2))
+            if (InAdvantageAndUpByOne(player1, player2))
             {
-                return "Advantage " + gameState.Player1.Name;
+                return "Advantage " + player1.Name;
             }
 
-            if (InAdvantageAndUpByOne(gameState.Player2, gameState.Player1))
+            if (InAdvantageAndUpByOne(player2, player1))
             {
-                return "Advantage " + gameState.Player2.Name;
+                return "Advantage " + player2.Name;
             }
 
             return null;
