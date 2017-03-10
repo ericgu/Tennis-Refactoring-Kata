@@ -9,8 +9,8 @@ namespace Tennis
         public TennisGame1(string player1Name, string player2Name)
         {
             _player1 = new Player(player1Name);
-
             _player2 = new Player(player2Name);
+
             _scoreRuleChain = new ScoreRuleChain(new IScoreRule[]
             {
                 new ScoreRuleEven(),
@@ -23,10 +23,11 @@ namespace Tennis
         public void WonPoint(string playerName)
         {
             if (playerName == _player1.Player1Name)
-                _player1.MScore1 += 1;
+                Player.WonPoint(_player1);
             else
-                _player2.MScore1 += 1;
+                Player.WonPoint(_player2);
         }
+
 
         public string GetScore()
         {

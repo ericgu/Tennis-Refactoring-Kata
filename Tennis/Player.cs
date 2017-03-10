@@ -21,6 +21,11 @@ namespace Tennis
             set { _player1Name = value; }
             get { return _player1Name; }
         }
+
+        public static int WonPoint(Player player1)
+        {
+            return player1.MScore1 += 1;
+        }
     }
 }
 
