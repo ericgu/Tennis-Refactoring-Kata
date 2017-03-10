@@ -4,14 +4,14 @@ namespace Tennis
     {
         public string Evaluate(Player player1, Player player2)
         {
-            if (player1.Score == player2.Score)
+            if (player1.Points == player2.Points)
             {
-                if (player1.Score >= 3)
+                if (player1.Points >= 3)
                 {
                     return "Deuce";
                 }
 
-                return ScoreWords.GetScoreWord(player1.Score) + "-All";
+                return ScoreWords.GetScoreWord(player1.Points) + "-All";
             }
 
             return null;

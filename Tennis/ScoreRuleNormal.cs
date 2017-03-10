@@ -4,7 +4,7 @@ namespace Tennis
     {
         public string Evaluate(Player player1, Player player2)
         {
-            return ScoreWords.GetScoreWord(player1.Score) + "-" + ScoreWords.GetScoreWord(player2.Score);
+            return ScoreWords.GetScoreWord(player1.Points) + "-" + ScoreWords.GetScoreWord(player2.Points);
         }
     }
 }

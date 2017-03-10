@@ -44,7 +44,7 @@ namespace Tennis
 
         public void WonPoint(string playerName)
         {
-            FindPlayerByName(playerName).Score++;
+            FindPlayerByName(playerName).Points++;
         }
     }
 }

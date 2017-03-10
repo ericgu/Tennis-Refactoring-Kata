@@ -9,7 +9,7 @@ namespace Tennis
 
         public string Name { set; get; }
 
-        public int Score { get; set; }
+        public int Points { get; set; }
     }
 }
 
