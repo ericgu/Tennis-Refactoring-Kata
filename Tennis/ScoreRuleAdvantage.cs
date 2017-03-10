@@ -1,3 +1,5 @@
+using Tennis;
+
 internal class ScoreRuleAdvantage : IScoreRule
 {
     private readonly string _player1Name;
@@ -9,6 +11,11 @@ internal class ScoreRuleAdvantage : IScoreRule
         _player2Name = player2Name;
     }
 
+
+    public string Evaluate(Player player1, Player player2)
+    {
+        return Evaluate(player1.Score, player2.Score);
+    }
     public string Evaluate(int mScore1, int mScore2)
     {
         string score = null;

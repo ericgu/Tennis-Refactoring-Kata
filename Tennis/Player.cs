@@ -2,7 +2,7 @@ namespace Tennis
 {
     class Player
     {
-        private int _mScore1;
+        private int _score;
         private string _player1Name;
 
         public Player(string player1Name)
@@ -10,10 +10,10 @@ namespace Tennis
             _player1Name = player1Name;
         }
 
-        public int MScore1
+        public int Score
         {
-            set { _mScore1 = value; }
-            get { return _mScore1; }
+            set { _score = value; }
+            get { return _score; }
         }
 
         public string Player1Name
@@ -24,7 +24,7 @@ namespace Tennis
 
         public static int WonPoint(Player player1)
         {
-            return player1.MScore1 += 1;
+            return player1.Score += 1;
         }
     }
 }
