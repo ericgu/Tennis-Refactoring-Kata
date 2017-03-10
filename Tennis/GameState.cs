@@ -28,7 +28,8 @@ namespace Tennis
             {
                 return Player1;
             }
-            else if (playerName == Player2.Name)
+
+            if (playerName == Player2.Name)
             {
                 return Player2;
             }
