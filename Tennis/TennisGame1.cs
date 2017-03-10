@@ -7,8 +7,7 @@ namespace Tennis
 
         public TennisGame1(string player1Name, string player2Name)
         {
-            _gameState = new GameState(new Player(player1Name), new Player(player2Name));
-
+            _gameState = new GameState(player1Name, player2Name);
 
             _scoreRuleChain = new ScoreRuleChain(new IScoreRule[]
             {
