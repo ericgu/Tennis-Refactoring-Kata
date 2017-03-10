@@ -31,7 +31,7 @@ namespace Tennis
 
         public string GetScore()
         {
-            return _scoreRuleChain.Evaluate(_player1.MScore1, _player2.MScore1);
+            return _scoreRuleChain.Evaluate(_player1, _player2);
         }
     }
 }
