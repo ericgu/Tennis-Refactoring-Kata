@@ -2,6 +2,8 @@ namespace Tennis
 {
     class GameState
     {
+        private readonly ScoreRuleChain _scoreRuleChain;
+
         public Player Player1 { set; get; }
 
         public Player Player2 { set; get; }
@@ -10,20 +12,38 @@ namespace Tennis
         {
             Player1 = new Player(player1Name);
             Player2 = new Player(player2Name);
+
+            _scoreRuleChain = new ScoreRuleChain(new IScoreRule[]
+            {
+                new ScoreRuleWin(),
+                new ScoreRuleEven(),
+                new ScoreRuleAdvantage(),
+                new ScoreRuleNormal()
+            });
         }
 
-        public Player FindPlayerByName(string playerName)
+        private Player FindPlayerByName(string playerName)
         {
-            Player currentPlayer;
             if (playerName == Player1.Name)
             {
-                currentPlayer = Player1;
+                return Player1;
             }
-            else
+            else if (playerName == Player2.Name)
             {
-                currentPlayer = Player2;
+                return Player2;
             }
-            return currentPlayer;
+
+            return null;
+        }
+
+        public string GetScore()
+        {
+            return _scoreRuleChain.Evaluate(Player1, Player2);
+        }
+
+        public void WonPoint(string playerName)
+        {
+            FindPlayerByName(playerName).Score++;
         }
     }
 }

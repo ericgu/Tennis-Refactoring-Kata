@@ -9,11 +9,11 @@ namespace Tennis
             _scoreRules = scoreRules;
         }
 
-        public string Evaluate(GameState gameState)
+        public string Evaluate(Player player1, Player player2)
         {
             foreach (IScoreRule rule in _scoreRules)
             {
-                string score = rule.Evaluate(gameState.Player1, gameState.Player2);
+                string score = rule.Evaluate(player1, player2);
                 if (score != null)
                 {
                     return score;
