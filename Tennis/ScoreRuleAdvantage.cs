@@ -1,19 +1,27 @@
+using NUnit.Framework.Constraints;
+
 namespace Tennis
 {
     internal class ScoreRuleAdvantage : IScoreRule
     {
         public string Evaluate(Player player1, Player player2)
         {
-            string score = null;
-            if (player1.Score >= 4 || player2.Score >= 4)
+            if (InAdvantageAndUpByOne(player1, player2))
             {
-                var minusResult = player1.Score - player2.Score;
-                if (player1.Score > player2.Score) score = "Advantage " + player1.Name;
-                else if (minusResult == -1) score = "Advantage " + player2.Name;
-
-                return score;
+                return "Advantage " + player1.Name;
             }
+
+            if (InAdvantageAndUpByOne(player2, player1))
+            {
+                return "Advantage " + player2.Name;
+            }
+
             return null;
+        }
+
+        private static bool InAdvantageAndUpByOne(Player player1, Player player2)
+        {
+            return player1.Score >= 4 && player1.Score - player2.Score == 1;
         }
     }
 }
