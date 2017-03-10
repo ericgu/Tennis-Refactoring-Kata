@@ -50,45 +50,34 @@ namespace Tennis
         }
 
         [Test]
-        public void CheckTennisGame1()
+        public void CheckAllScores()
         {
             var game = new TennisGame1("player1", "player2");
-            CheckAllScores(game);
-        }
-
-        private void CheckAllScores(ITennisGame game)
-        {
             var highestScore = Math.Max(_player1Score, _player2Score);
             for (var i = 0; i < highestScore; i++)
             {
                 if (i < _player1Score)
-                    game.WonPoint("player1");
+                    ((ITennisGame) game).WonPoint("player1");
                 if (i < _player2Score)
-                    game.WonPoint("player2");
+                    ((ITennisGame) game).WonPoint("player2");
             }
-            Assert.AreEqual(_expectedScore, game.GetScore());
+            Assert.AreEqual(_expectedScore, ((ITennisGame) game).GetScore());
         }
-
     }
 
     [TestFixture]
     public class ExampleGameTennisTest
     {
         [Test]
-        public void CheckGame1()
+        public void RealisticTennisGame()
         {
             var game = new TennisGame1("player1", "player2");
-            RealisticTennisGame(game);
-        }
-
-        private void RealisticTennisGame(ITennisGame game)
-        {
             string[] points = { "player1", "player1", "player2", "player2", "player1", "player1" };
             string[] expectedScores = { "Fifteen-Love", "Thirty-Love", "Thirty-Fifteen", "Thirty-All", "Forty-Thirty", "Win for player1" };
             for (var i = 0; i < 6; i++)
             {
-                game.WonPoint(points[i]);
-                Assert.AreEqual(expectedScores[i], game.GetScore());
+                ((ITennisGame) game).WonPoint(points[i]);
+                Assert.AreEqual(expectedScores[i], ((ITennisGame) game).GetScore());
             }
         }
     }
