@@ -13,11 +13,8 @@ internal class ScoreRuleWin : IScoreRule
 
     public string Evaluate(Player player1, Player player2)
     {
-        return Evaluate(player1.Score, player2.Score);
-    }
-
-    public string Evaluate(int mScore1, int mScore2)
-    {
+        int mScore1 = player1.Score;
+        int mScore2 = player2.Score;
         string score;
         if (mScore1 >= 4 || mScore2 >= 4)
         {

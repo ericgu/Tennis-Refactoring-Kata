@@ -13,7 +13,7 @@ internal class ScoreRuleChain
     {
         foreach (IScoreRule rule in _scoreRules)
         {
-            string score = rule.Evaluate(player1.Score, player2.Score);
+            string score = rule.Evaluate(player1, player2);
             if (score != null)
             {
                 return score;
