@@ -1,15 +1,13 @@
-using System.Data.SqlTypes;
-
 internal class ScoreRuleChain
 {
-    private IScoreRule[] _scoreRules;
+    private readonly IScoreRule[] _scoreRules;
 
     public ScoreRuleChain(IScoreRule[] scoreRules)
     {
         _scoreRules = scoreRules;
     }
 
-    public string Evaluate(int mScore2, int mScore1)
+    public string Evaluate(int mScore1, int mScore2)
     {
         foreach (IScoreRule rule in _scoreRules)
         {
