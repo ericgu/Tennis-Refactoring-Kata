@@ -22,9 +22,9 @@ namespace Tennis
             get { return _name; }
         }
 
-        public static int WonPoint(Player player1)
+        public int WonPoint()
         {
-            return player1.Score += 1;
+            return Score += 1;
         }
     }
 }

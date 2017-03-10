@@ -22,10 +22,23 @@ namespace Tennis
 
         public void WonPoint(string playerName)
         {
+            var currentPlayer = FindPlayerByName(playerName);
+
+            currentPlayer.WonPoint();
+        }
+
+        private Player FindPlayerByName(string playerName)
+        {
+            Player currentPlayer;
             if (playerName == _player1.Name)
-                Player.WonPoint(_player1);
+            {
+                currentPlayer = _player1;
+            }
             else
-                Player.WonPoint(_player2);
+            {
+                currentPlayer = _player2;
+            }
+            return currentPlayer;
         }
 
 
