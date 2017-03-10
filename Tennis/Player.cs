@@ -5,12 +5,11 @@ namespace Tennis
         public Player(string name)
         {
             Name = name;
-            Score = new Score();
         }
 
         public string Name { set; get; }
 
-        public Score Score { get; }
+        public int Score { get; set; }
     }
 }
 
