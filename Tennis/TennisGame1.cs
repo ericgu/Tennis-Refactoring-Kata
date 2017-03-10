@@ -3,13 +3,12 @@ namespace Tennis
     class TennisGame1 : ITennisGame
     {
         private readonly ScoreRuleChain _scoreRuleChain;
-        private readonly Player _player1;
-        private readonly Player _player2;
+        private readonly GameState _gameState;
 
         public TennisGame1(string player1Name, string player2Name)
         {
-            _player1 = new Player(player1Name);
-            _player2 = new Player(player2Name);
+            _gameState = new GameState(new Player(player1Name), new Player(player2Name));
+
 
             _scoreRuleChain = new ScoreRuleChain(new IScoreRule[]
             {
@@ -30,13 +29,13 @@ namespace Tennis
         private Player FindPlayerByName(string playerName)
         {
             Player currentPlayer;
-            if (playerName == _player1.Name)
+            if (playerName == _gameState.Player1.Name)
             {
-                currentPlayer = _player1;
+                currentPlayer = _gameState.Player1;
             }
             else
             {
-                currentPlayer = _player2;
+                currentPlayer = _gameState.Player2;
             }
             return currentPlayer;
         }
@@ -44,7 +43,7 @@ namespace Tennis
 
         public string GetScore()
         {
-            return _scoreRuleChain.Evaluate(_player1, _player2);
+            return _scoreRuleChain.Evaluate(_gameState.Player1, _gameState.Player2);
         }
     }
 }
