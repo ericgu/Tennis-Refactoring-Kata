@@ -39,7 +39,7 @@ namespace Tennis
 
         public string GetScore()
         {
-            return _scoreRuleChain.Evaluate(Player1, Player2);
+            return _scoreRuleChain.GetScore(Player1, Player2);
         }
 
         public void WonPoint(string playerName)

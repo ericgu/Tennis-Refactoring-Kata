@@ -9,7 +9,7 @@ namespace Tennis
             _scoreRules = scoreRules;
         }
 
-        public string Evaluate(Player player1, Player player2)
+        public string GetScore(Player player1, Player player2)
         {
             foreach (IScoreRule rule in _scoreRules)
             {
