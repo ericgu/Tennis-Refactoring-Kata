@@ -29,7 +29,7 @@ namespace Tennis
 
         public string GetScore()
         {
-            Task task = new Task(() => new Scorer().GetScoreInternal(_mScore1, _mScore2, this._player1Name, this._player2Name));
+            Task task = new Task(() => new Scorer().GetScoreInternal(new ScoringData(_mScore1, _mScore2, this._player1Name, this._player2Name)));
             task.Start();
             task.Wait();
 

@@ -4,12 +4,12 @@ internal class Scorer
 
     public event ScoreHandler ScoreReady;
 
-    public void GetScoreInternal(int points1, int points2, string player1Name, string player2Name)
+    public void GetScoreInternal(ScoringData scoringData)
     {
         string score = "";
-        if (points1 == points2)
+        if (scoringData.Points1 == scoringData.Points2)
         {
-            switch (points1)
+            switch (scoringData.Points1)
             {
                 case 0:
                     score = "Love-All";
@@ -25,24 +25,24 @@ internal class Scorer
                     break;
             }
         }
-        else if (points1 >= 4 || points2 >= 4)
+        else if (scoringData.Points1 >= 4 || scoringData.Points2 >= 4)
         {
-            var minusResult = points1 - points2;
-            if (minusResult == 1) score = "Advantage " + player1Name;
-            else if (minusResult == -1) score = "Advantage " + player2Name;
-            else if (minusResult >= 2) score = "Win for " + player1Name;
-            else score = "Win for " + player2Name;
+            var minusResult = scoringData.Points1 - scoringData.Points2;
+            if (minusResult == 1) score = "Advantage " + scoringData.Player1Name;
+            else if (minusResult == -1) score = "Advantage " + scoringData.Player2Name;
+            else if (minusResult >= 2) score = "Win for " + scoringData.Player1Name;
+            else score = "Win for " + scoringData.Player2Name;
         }
         else
         {
             for (var i = 1; i < 3; i++)
             {
                 int tempScore;
-                if (i == 1) tempScore = points1;
+                if (i == 1) tempScore = scoringData.Points1;
                 else
                 {
                     score += "-";
-                    tempScore = points2;
+                    tempScore = scoringData.Points2;
                 }
                 switch (tempScore)
                 {
@@ -62,9 +62,11 @@ internal class Scorer
             }
         }
 
+        scoringData.Score = score;
+
         if (ScoreReady != null)
         {
-            ScoreReady(score);
+            ScoreReady(scoringData);
         }
     }
 }
