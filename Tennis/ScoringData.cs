@@ -20,12 +20,12 @@ namespace Tennis
 
         public string Player2Name { get; }
 
-        public bool OnePlayerScoredFourOrHigher
+        public bool APlayerScoredFourOrHigher
         {
             get { return Points1 >= 4 || Points2 >= 4; }
         }
 
-        public bool ScoreEqual
+        public bool IsScoreEqual
         {
             get { return Points1 == Points2; }
         }
@@ -68,7 +68,7 @@ namespace Tennis
 
         public bool IsDeuce()
         {
-            return ScoreEqual && Points1 >= 3;
+            return IsScoreEqual && Points1 >= 3;
         }
     }
 }

@@ -1,6 +1,6 @@
 namespace Tennis
 {
-    internal class ScoreNormal: IScorer
+    internal class ScoreNormal
     {
         public event ScoreHandler ScoreReady;
 

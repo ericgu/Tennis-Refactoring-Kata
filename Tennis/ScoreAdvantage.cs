@@ -1,12 +1,12 @@
 namespace Tennis
 {
-    internal class ScoreAdvantage: IScorer
+    internal class ScoreAdvantage
     {
         public event ScoreHandler ScoreReady;
 
         public void Score(ScoringData scoringData, string score)
         {
-            if (score == null && scoringData.OnePlayerScoredFourOrHigher)
+            if (score == null && scoringData.APlayerScoredFourOrHigher)
             {
                 if (scoringData.Player1PointAdvantage == 1)
                 {
