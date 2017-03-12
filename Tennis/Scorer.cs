@@ -1,8 +1,10 @@
-using Tennis;
-
 internal class Scorer
 {
-    public void GetScoreInternal(TennisGame1 tennisGame1, int points1, int points2, string player1Name, string player2Name)
+    public delegate void ScoreHandler(string score);
+
+    public event ScoreHandler ScoreReady;
+
+    public void GetScoreInternal(int points1, int points2, string player1Name, string player2Name)
     {
         string score = "";
         if (points1 == points2)
@@ -59,6 +61,10 @@ internal class Scorer
                 }
             }
         }
-        tennisGame1._score = score;
+
+        if (ScoreReady != null)
+        {
+            ScoreReady(score);
+        }
     }
 }
