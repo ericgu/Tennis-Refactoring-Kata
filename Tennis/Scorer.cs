@@ -2,8 +2,6 @@ namespace Tennis
 {
     internal class Scorer
     {
-        public delegate void ScoreHandler(ScoringData scoringData);
-
         public event ScoreHandler ScoreReady;
 
         public void Score(ScoringData scoringData)
