@@ -1,6 +1,6 @@
 namespace Tennis
 {
-    internal class Scorer
+    internal class Scorer : IScorer
     {
         public event ScoreHandler ScoreReady;
 
@@ -9,25 +9,15 @@ namespace Tennis
             string score = "";
             if (scoringData.ScoreEqual)
             {
-                if (scoringData.Points1 >= 4)
-                {
-                    score = "Deuce";
-                }
-                else
-                {
-                    score = scoringData.Player1PointsName + "-All";
-                }
+                new ScoreEqual().Score(scoringData);
             }
             else if (scoringData.OnePlayerScoredFourOrHigher)
             {
-                if (scoringData.Player1PointAdvantage == 1) score = "Advantage " + scoringData.Player1Name;
-                else if (scoringData.Player2PointAdvantage == 1) score = "Advantage " + scoringData.Player2Name;
-                else if (scoringData.Player1PointAdvantage == 2) score = "Win for " + scoringData.Player1Name;
-                else if (scoringData.Player2PointAdvantage == 2) score = "Win for " + scoringData.Player2Name;
+                new ScoreAdvantageOrWin().Score(scoringData);
             }
             else
             {
-                score = scoringData.Player1PointsName + "-" + scoringData.Player1PointsName;
+                new ScoreNormal().Score(scoringData);
             }
 
             scoringData.Score = score;
