@@ -6,14 +6,15 @@ namespace Tennis
 
         public void Score(ScoringData scoringData)
         {
-            new ScoreEqual().Score(scoringData);
-            new ScoreAdvantageOrWin().Score(scoringData);
-            new ScoreNormal().Score(scoringData);
+            var scoreEqual = new ScoreEqual();
+            var scoreAdvantageOrWin = new ScoreAdvantageOrWin();
+            var scoreNormal = new ScoreNormal();
 
-            if (ScoreReady != null)
-            {
-                ScoreReady(scoringData);
-            }
+            scoreEqual.ScoreReady += scoreAdvantageOrWin.Score;
+            scoreAdvantageOrWin.ScoreReady += scoreNormal.Score;
+            scoreNormal.ScoreReady += data => ScoreReady(data); 
+
+            scoreEqual.Score(scoringData);
         }
     }
 }
