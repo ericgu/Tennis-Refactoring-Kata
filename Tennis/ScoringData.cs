@@ -37,7 +37,6 @@ namespace Tennis
             }
         }
 
-
         public int Player2PointAdvantage
         {
             get
