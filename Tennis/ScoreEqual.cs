@@ -6,7 +6,7 @@ namespace Tennis
 
         public void Score(ScoringData scoringData)
         {
-            if (scoringData.ScoreEqual)
+            if (scoringData.Score == null && scoringData.ScoreEqual)
             {
                 if (scoringData.Points1 >= 4)
                 {
@@ -16,6 +16,11 @@ namespace Tennis
                 {
                     scoringData.Score = scoringData.Player1PointsName + "-All";
                 }
+            }
+
+            if (ScoreReady != null)
+            {
+                ScoreReady(scoringData);
             }
         }
     }

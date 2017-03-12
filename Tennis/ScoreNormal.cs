@@ -6,7 +6,15 @@ namespace Tennis
 
         public void Score(ScoringData scoringData)
         {
-            scoringData.Score = scoringData.Player1PointsName + "-" + scoringData.Player1PointsName;
+            if (scoringData.Score == null)
+            {
+                scoringData.Score = scoringData.Player1PointsName + "-" + scoringData.Player1PointsName;
+            }
+
+            if (ScoreReady != null)
+            {
+                ScoreReady(scoringData);
+            }
         }
     }
 }
