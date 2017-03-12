@@ -8,7 +8,7 @@ namespace Tennis
         {
             if (scoringData.Score == null)
             {
-                scoringData.Score = scoringData.Player1PointsName + "-" + scoringData.Player1PointsName;
+                scoringData.Score = scoringData.Player1PointsName + "-" + scoringData.Player2PointsName;
             }
 
             if (ScoreReady != null)

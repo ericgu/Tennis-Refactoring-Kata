@@ -8,6 +8,7 @@ internal class ScoringData
         Points2 = points2;
         Player1Name = player1Name;
         Player2Name = player2Name;
+        Score = null;
     }
 
     public int Points1 { get; }
@@ -32,28 +33,29 @@ internal class ScoringData
 
     public int Player1PointAdvantage
     {
-        get
-        {
-            if (Points1 > Points2)
-            {
-                return Points1 - Points2;
-            }
-
-            return 0;
+        get {
+            return GetPointsAdvantage(Points1, Points2);
         }
     }
+
 
     public int Player2PointAdvantage
     {
         get
         {
-            if (Points2 > Points1)
-            {
-                return Points2 - Points1;
-            }
-
-            return 0;
+            return GetPointsAdvantage(Points2, Points1);
         }
+    }
+
+
+    private int GetPointsAdvantage(int playerPoints, int otherPlayerPoints)
+    {
+        if (playerPoints > otherPlayerPoints)
+        {
+            return playerPoints - otherPlayerPoints;
+        }
+
+        return 0;
     }
 
     public string Player1PointsName
