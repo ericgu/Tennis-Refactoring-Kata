@@ -5,44 +5,43 @@ namespace Tennis
 {
     class TennisGame1 : ITennisGame
     {
-        private int m_score1 = 0;
-        private int m_score2 = 0;
-        private string player1Name;
-        private string player2Name;
+        private int _mScore1 = 0;
+        private int _mScore2 = 0;
+        private string _player1Name;
+        private string _player2Name;
 
         public TennisGame1(string player1Name, string player2Name)
         {
-            this.player1Name = player1Name;
-            this.player2Name = player2Name;
+            _player1Name = player1Name;
+            _player2Name = player2Name;
         }
 
         public void WonPoint(string playerName)
         {
-            if (playerName == "player1")
-                m_score1 += 1;
+            if (playerName == _player1Name)
+                _mScore1 += 1;
             else
-                m_score2 += 1;
+                _mScore2 += 1;
         }
 
-        private ManualResetEvent _dataReady = new ManualResetEvent(false);
+        //private ManualResetEvent _dataReady = new ManualResetEvent(false);
         private string _score;
 
         public string GetScore()
         {
-            Task task = new Task(GetScoreInternal);
+            Task task = new Task(() => GetScoreInternal(this, _mScore1, _mScore2, this._player1Name, this._player2Name));
             task.Start();
             task.Wait();
 
             return _score;
         }
 
-        private void GetScoreInternal()
+        private static void GetScoreInternal(TennisGame1 tennisGame1, int points1, int points2, string player1Name, string player2Name)
         {
             string score = "";
-            var tempScore = 0;
-            if (m_score1 == m_score2)
+            if (points1 == points2)
             {
-                switch (m_score1)
+                switch (points1)
                 {
                     case 0:
                         score = "Love-All";
@@ -58,23 +57,24 @@ namespace Tennis
                         break;
                 }
             }
-            else if (m_score1 >= 4 || m_score2 >= 4)
+            else if (points1 >= 4 || points2 >= 4)
             {
-                var minusResult = m_score1 - m_score2;
-                if (minusResult == 1) score = "Advantage player1";
-                else if (minusResult == -1) score = "Advantage player2";
-                else if (minusResult >= 2) score = "Win for player1";
-                else score = "Win for player2";
+                var minusResult = points1 - points2;
+                if (minusResult == 1) score = "Advantage " + player1Name;
+                else if (minusResult == -1) score = "Advantage " + player2Name;
+                else if (minusResult >= 2) score = "Win for " + player1Name;
+                else score = "Win for " + player2Name;
             }
             else
             {
                 for (var i = 1; i < 3; i++)
                 {
-                    if (i == 1) tempScore = m_score1;
+                    int tempScore;
+                    if (i == 1) tempScore = points1;
                     else
                     {
                         score += "-";
-                        tempScore = m_score2;
+                        tempScore = points2;
                     }
                     switch (tempScore)
                     {
@@ -93,7 +93,7 @@ namespace Tennis
                     }
                 }
             }
-            _score = score;
+            tennisGame1._score = score;
         }
     }
 }
