@@ -8,7 +8,7 @@ namespace Tennis
         {
             if (scoringData.Score == null && scoringData.ScoreEqual)
             {
-                if (scoringData.Points1 >= 4)
+                if (scoringData.Points1 >= 3)
                 {
                     scoringData.Score = "Deuce";
                 }
