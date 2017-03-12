@@ -11,10 +11,7 @@ namespace Tennis
                 score = scoringData.Player1PointsName + "-" + scoringData.Player2PointsName;
             }
 
-            if (ScoreReady != null)
-            {
-                ScoreReady(scoringData, score);
-            }
+            ScoreReady?.Invoke(scoringData, score);
         }
     }
 }

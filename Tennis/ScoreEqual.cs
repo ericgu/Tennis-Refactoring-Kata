@@ -18,10 +18,7 @@ namespace Tennis
                 }
             }
 
-            if (ScoreReady != null)
-            {
-                ScoreReady(scoringData, score);
-            }
+            ScoreReady?.Invoke(scoringData, score);
         }
     }
 }

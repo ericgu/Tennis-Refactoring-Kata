@@ -18,10 +18,7 @@ namespace Tennis
                     score = "Win for " + scoringData.Player2Name;
             }
 
-            if (ScoreReady != null)
-            {
-                ScoreReady(scoringData, score);
-            }
+            ScoreReady?.Invoke(scoringData, score);
         }
     }
 }
