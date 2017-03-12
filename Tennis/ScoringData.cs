@@ -17,4 +17,40 @@ internal class ScoringData
     public string Player2Name { get; }
 
     public string Score { get; set; }
+
+    public bool OnePlayerScoredFourOrHigher
+    {
+        get { return Points1 >= 4 || Points2 >= 4; }
+    }
+
+    public bool ScoreEqual
+    {
+        get { return Points1 == Points2; }
+    }
+
+    public int Player1PointAdvantage
+    {
+        get
+        {
+            if (Points1 > Points2)
+            {
+                return Points1 - Points2;
+            }
+
+            return 0;
+        }
+    }
+
+    public int Player2PointAdvantage
+    {
+        get
+        {
+            if (Points2 > Points1)
+            {
+                return Points2 - Points1;
+            }
+
+            return 0;
+        }
+    }
 }

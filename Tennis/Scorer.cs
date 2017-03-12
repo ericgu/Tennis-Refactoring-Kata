@@ -9,7 +9,7 @@ namespace Tennis
         public void Score(ScoringData scoringData)
         {
             string score = "";
-            if (ScoreEqual(scoringData))
+            if (scoringData.ScoreEqual)
             {
                 switch (scoringData.Points1)
                 {
@@ -27,12 +27,12 @@ namespace Tennis
                         break;
                 }
             }
-            else if (OnePlayerScoredFourOrHigher(scoringData))
+            else if (scoringData.OnePlayerScoredFourOrHigher)
             {
-                if (Player1PointAdvantage(scoringData) == 1) score = "Advantage " + scoringData.Player1Name;
-                else if (Player2PointAdvantage(scoringData) == 1) score = "Advantage " + scoringData.Player2Name;
-                else if (Player1PointAdvantage(scoringData) == 2) score = "Win for " + scoringData.Player1Name;
-                else if (Player2PointAdvantage(scoringData) == 2) score = "Win for " + scoringData.Player2Name;
+                if (scoringData.Player1PointAdvantage == 1) score = "Advantage " + scoringData.Player1Name;
+                else if (scoringData.Player2PointAdvantage == 1) score = "Advantage " + scoringData.Player2Name;
+                else if (scoringData.Player1PointAdvantage == 2) score = "Win for " + scoringData.Player1Name;
+                else if (scoringData.Player2PointAdvantage == 2) score = "Win for " + scoringData.Player2Name;
             }
             else
             {
@@ -69,36 +69,6 @@ namespace Tennis
             {
                 ScoreReady(scoringData);
             }
-        }
-
-        private static bool OnePlayerScoredFourOrHigher(ScoringData scoringData)
-        {
-            return scoringData.Points1 >= 4 || scoringData.Points2 >= 4;
-        }
-
-        private static bool ScoreEqual(ScoringData scoringData)
-        {
-            return scoringData.Points1 == scoringData.Points2;
-        }
-
-        private static int Player1PointAdvantage(ScoringData scoringData)
-        {
-            if (scoringData.Points1 > scoringData.Points2)
-            {
-                return scoringData.Points1 - scoringData.Points2;
-            }
-
-            return 0;
-        }
-
-        private static int Player2PointAdvantage(ScoringData scoringData)
-        {
-            if (scoringData.Points2 > scoringData.Points1)
-            {
-                return scoringData.Points2 - scoringData.Points1;
-            }
-
-            return 0;
         }
     }
 }
