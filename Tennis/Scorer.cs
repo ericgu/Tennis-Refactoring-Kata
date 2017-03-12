@@ -11,20 +11,13 @@ namespace Tennis
             string score = "";
             if (scoringData.ScoreEqual)
             {
-                switch (scoringData.Points1)
+                if (scoringData.Points1 >= 4)
                 {
-                    case 0:
-                        score = "Love-All";
-                        break;
-                    case 1:
-                        score = "Fifteen-All";
-                        break;
-                    case 2:
-                        score = "Thirty-All";
-                        break;
-                    default:
-                        score = "Deuce";
-                        break;
+                    score = "Deuce";
+                }
+                else
+                {
+                    score = scoringData.Player1PointsName + "-All";
                 }
             }
             else if (scoringData.OnePlayerScoredFourOrHigher)
@@ -36,31 +29,7 @@ namespace Tennis
             }
             else
             {
-                for (var i = 1; i < 3; i++)
-                {
-                    int tempScore;
-                    if (i == 1) tempScore = scoringData.Points1;
-                    else
-                    {
-                        score += "-";
-                        tempScore = scoringData.Points2;
-                    }
-                    switch (tempScore)
-                    {
-                        case 0:
-                            score += "Love";
-                            break;
-                        case 1:
-                            score += "Fifteen";
-                            break;
-                        case 2:
-                            score += "Thirty";
-                            break;
-                        case 3:
-                            score += "Forty";
-                            break;
-                    }
-                }
+                score = scoringData.Player1PointsName + "-" + scoringData.Player1PointsName;
             }
 
             scoringData.Score = score;

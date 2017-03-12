@@ -1,5 +1,7 @@
 internal class ScoringData
 {
+    public static string[] ScoreWorkds = { "Love", "Fifteen", "Thirty", "Forty" };
+
     public ScoringData(int points1, int points2, string player1Name, string player2Name)
     {
         Points1 = points1;
@@ -52,5 +54,15 @@ internal class ScoringData
 
             return 0;
         }
+    }
+
+    public string Player1PointsName
+    {
+        get { return ScoreWorkds[Points1]; }
+    }
+
+    public string Player2PointsName
+    {
+        get { return ScoreWorkds[Points2]; }
     }
 }
