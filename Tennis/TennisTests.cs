@@ -1,3 +1,4 @@
+#if fred
 using System;
 using NUnit.Framework;
 
@@ -122,4 +123,4 @@ namespace Tennis
     }
 
 }
-
+#endif

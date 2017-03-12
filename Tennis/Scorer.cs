@@ -1,72 +1,104 @@
-internal class Scorer
+namespace Tennis
 {
-    public delegate void ScoreHandler(string score);
-
-    public event ScoreHandler ScoreReady;
-
-    public void GetScoreInternal(ScoringData scoringData)
+    internal class Scorer
     {
-        string score = "";
-        if (scoringData.Points1 == scoringData.Points2)
+        public delegate void ScoreHandler(ScoringData scoringData);
+
+        public event ScoreHandler ScoreReady;
+
+        public void Score(ScoringData scoringData)
         {
-            switch (scoringData.Points1)
+            string score = "";
+            if (ScoreEqual(scoringData))
             {
-                case 0:
-                    score = "Love-All";
-                    break;
-                case 1:
-                    score = "Fifteen-All";
-                    break;
-                case 2:
-                    score = "Thirty-All";
-                    break;
-                default:
-                    score = "Deuce";
-                    break;
-            }
-        }
-        else if (scoringData.Points1 >= 4 || scoringData.Points2 >= 4)
-        {
-            var minusResult = scoringData.Points1 - scoringData.Points2;
-            if (minusResult == 1) score = "Advantage " + scoringData.Player1Name;
-            else if (minusResult == -1) score = "Advantage " + scoringData.Player2Name;
-            else if (minusResult >= 2) score = "Win for " + scoringData.Player1Name;
-            else score = "Win for " + scoringData.Player2Name;
-        }
-        else
-        {
-            for (var i = 1; i < 3; i++)
-            {
-                int tempScore;
-                if (i == 1) tempScore = scoringData.Points1;
-                else
-                {
-                    score += "-";
-                    tempScore = scoringData.Points2;
-                }
-                switch (tempScore)
+                switch (scoringData.Points1)
                 {
                     case 0:
-                        score += "Love";
+                        score = "Love-All";
                         break;
                     case 1:
-                        score += "Fifteen";
+                        score = "Fifteen-All";
                         break;
                     case 2:
-                        score += "Thirty";
+                        score = "Thirty-All";
                         break;
-                    case 3:
-                        score += "Forty";
+                    default:
+                        score = "Deuce";
                         break;
                 }
             }
+            else if (OnePlayerScoredFourOrHigher(scoringData))
+            {
+                if (Player1PointAdvantage(scoringData) == 1) score = "Advantage " + scoringData.Player1Name;
+                else if (Player2PointAdvantage(scoringData) == 1) score = "Advantage " + scoringData.Player2Name;
+                else if (Player1PointAdvantage(scoringData) == 2) score = "Win for " + scoringData.Player1Name;
+                else if (Player2PointAdvantage(scoringData) == 2) score = "Win for " + scoringData.Player2Name;
+            }
+            else
+            {
+                for (var i = 1; i < 3; i++)
+                {
+                    int tempScore;
+                    if (i == 1) tempScore = scoringData.Points1;
+                    else
+                    {
+                        score += "-";
+                        tempScore = scoringData.Points2;
+                    }
+                    switch (tempScore)
+                    {
+                        case 0:
+                            score += "Love";
+                            break;
+                        case 1:
+                            score += "Fifteen";
+                            break;
+                        case 2:
+                            score += "Thirty";
+                            break;
+                        case 3:
+                            score += "Forty";
+                            break;
+                    }
+                }
+            }
+
+            scoringData.Score = score;
+
+            if (ScoreReady != null)
+            {
+                ScoreReady(scoringData);
+            }
         }
 
-        scoringData.Score = score;
-
-        if (ScoreReady != null)
+        private static bool OnePlayerScoredFourOrHigher(ScoringData scoringData)
         {
-            ScoreReady(scoringData);
+            return scoringData.Points1 >= 4 || scoringData.Points2 >= 4;
+        }
+
+        private static bool ScoreEqual(ScoringData scoringData)
+        {
+            return scoringData.Points1 == scoringData.Points2;
+        }
+
+        private static int Player1PointAdvantage(ScoringData scoringData)
+        {
+            if (scoringData.Points1 > scoringData.Points2)
+            {
+                return scoringData.Points1 - scoringData.Points2;
+            }
+
+            return 0;
+        }
+
+        private static int Player2PointAdvantage(ScoringData scoringData)
+        {
+            if (scoringData.Points2 > scoringData.Points1)
+            {
+                return scoringData.Points2 - scoringData.Points1;
+            }
+
+            return 0;
         }
     }
 }

@@ -1,14 +1,11 @@
-using System.Threading;
-using System.Threading.Tasks;
-
 namespace Tennis
 {
     class TennisGame1 : ITennisGame
     {
-        private int _mScore1 = 0;
-        private int _mScore2 = 0;
-        private string _player1Name;
-        private string _player2Name;
+        private int _mScore1;
+        private int _mScore2;
+        private readonly string _player1Name;
+        private readonly string _player2Name;
 
         public TennisGame1(string player1Name, string player2Name)
         {
@@ -25,15 +22,18 @@ namespace Tennis
         }
 
         //private ManualResetEvent _dataReady = new ManualResetEvent(false);
-        public string _score;
+
 
         public string GetScore()
         {
-            Task task = new Task(() => new Scorer().GetScoreInternal(new ScoringData(_mScore1, _mScore2, this._player1Name, this._player2Name)));
-            task.Start();
-            task.Wait();
+            string score = "Score error";
 
-            return _score;
+            var scorer = new Scorer();
+            scorer.ScoreReady += scoringData => score = scoringData.Score;
+
+            scorer.Score(new ScoringData(_mScore1, _mScore2, _player1Name, _player2Name));
+
+            return score;
         }
     }
 }
