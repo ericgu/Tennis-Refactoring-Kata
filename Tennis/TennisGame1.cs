@@ -1,3 +1,6 @@
+using System.Threading;
+using System.Threading.Tasks;
+
 namespace Tennis
 {
     class TennisGame1 : ITennisGame
@@ -21,7 +24,19 @@ namespace Tennis
                 m_score2 += 1;
         }
 
+        private ManualResetEvent _dataReady = new ManualResetEvent(false);
+        private string _score;
+
         public string GetScore()
+        {
+            Task task = new Task(GetScoreInternal);
+            task.Start();
+            task.Wait();
+
+            return _score;
+        }
+
+        private void GetScoreInternal()
         {
             string score = "";
             var tempScore = 0;
@@ -41,7 +56,6 @@ namespace Tennis
                     default:
                         score = "Deuce";
                         break;
-
                 }
             }
             else if (m_score1 >= 4 || m_score2 >= 4)
@@ -57,7 +71,11 @@ namespace Tennis
                 for (var i = 1; i < 3; i++)
                 {
                     if (i == 1) tempScore = m_score1;
-                    else { score += "-"; tempScore = m_score2; }
+                    else
+                    {
+                        score += "-";
+                        tempScore = m_score2;
+                    }
                     switch (tempScore)
                     {
                         case 0:
@@ -75,7 +93,7 @@ namespace Tennis
                     }
                 }
             }
-            return score;
+            _score = score;
         }
     }
 }
