@@ -47,7 +47,8 @@
     <Compile Include="IScorer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ITennisGame.cs" />
-    <Compile Include="ScoreAdvantageOrWin.cs" />
+    <Compile Include="ScoreAdvantage.cs" />
+    <Compile Include="ScoreWin.cs" />
     <Compile Include="ScoreEqual.cs" />
     <Compile Include="ScoreHandler.cs" />
     <Compile Include="ScoreNormal.cs" />

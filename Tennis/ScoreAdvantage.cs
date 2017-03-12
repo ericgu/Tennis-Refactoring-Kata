@@ -1,6 +1,6 @@
 namespace Tennis
 {
-    internal class ScoreAdvantageOrWin: IScorer
+    internal class ScoreAdvantage: IScorer
     {
         public event ScoreHandler ScoreReady;
 
@@ -12,10 +12,6 @@ namespace Tennis
                     score = "Advantage " + scoringData.Player1Name;
                 else if (scoringData.Player2PointAdvantage == 1)
                     score = "Advantage " + scoringData.Player2Name;
-                else if (scoringData.Player1PointAdvantage >= 2)
-                   score = "Win for " + scoringData.Player1Name;
-                else if (scoringData.Player2PointAdvantage >= 2)
-                    score = "Win for " + scoringData.Player2Name;
             }
 
             ScoreReady?.Invoke(scoringData, score);
