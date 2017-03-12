@@ -4,16 +4,16 @@ namespace Tennis
     {
         public event ScoreHandler ScoreReady;
 
-        public void Score(ScoringData scoringData)
+        public void Score(ScoringData scoringData, string score)
         {
-            if (scoringData.Score == null)
+            if (score == null)
             {
-                scoringData.Score = scoringData.Player1PointsName + "-" + scoringData.Player2PointsName;
+                score = scoringData.Player1PointsName + "-" + scoringData.Player2PointsName;
             }
 
             if (ScoreReady != null)
             {
-                ScoreReady(scoringData);
+                ScoreReady(scoringData, score);
             }
         }
     }

@@ -1,6 +1,6 @@
 namespace Tennis
 {
-    internal class Scorer : IScorer
+    internal class Scorer
     {
         public event ScoreHandler ScoreReady;
 
@@ -12,9 +12,9 @@ namespace Tennis
 
             scoreEqual.ScoreReady += scoreAdvantageOrWin.Score;
             scoreAdvantageOrWin.ScoreReady += scoreNormal.Score;
-            scoreNormal.ScoreReady += data => ScoreReady(data); 
+            scoreNormal.ScoreReady += (data, scoreParam) => ScoreReady(data, scoreParam); 
 
-            scoreEqual.Score(scoringData);
+            scoreEqual.Score(scoringData, null);
         }
     }
 }
