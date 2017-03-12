@@ -6,7 +6,7 @@ namespace Tennis
 
         public void Score(ScoringData scoringData, string score)
         {
-            if (score == null && scoringData.IsDeuce())
+            if (scoringData.IsDeuce)
             {
                 score = "Deuce";
             }

@@ -12,9 +12,9 @@ namespace Tennis
             Player2Name = player2Name;
         }
 
-        public int Points1 { get; }
+        private int Points1 { get; }
 
-        public int Points2 { get; }
+        private int Points2 { get; }
 
         public string Player1Name { get; }
 
@@ -66,9 +66,14 @@ namespace Tennis
             get { return ScoreWorkds[Points2]; }
         }
 
-        public bool IsDeuce()
+        public bool IsDeuce
         {
-            return IsScoreEqual && Points1 >= 3;
+            get { return IsScoreEqual && Points1 >= 3; }
+        }
+
+        public bool IsScoringNormal
+        {
+            get { return Points1 < 4 && Points2 < 4 && !IsScoreEqual; }
         }
     }
 }

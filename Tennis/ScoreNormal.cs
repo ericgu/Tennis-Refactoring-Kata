@@ -6,7 +6,7 @@ namespace Tennis
 
         public void Score(ScoringData scoringData, string score)
         {
-            if (score == null)
+            if (scoringData.IsScoringNormal)
             {
                 score = scoringData.Player1PointsName + "-" + scoringData.Player2PointsName;
             }

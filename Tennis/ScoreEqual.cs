@@ -6,7 +6,7 @@ namespace Tennis
 
         public void Score(ScoringData scoringData, string score)
         {
-            if (score == null && scoringData.IsScoreEqual)
+            if (!scoringData.IsDeuce && scoringData.IsScoreEqual)
             {
                 score = scoringData.Player1PointsName + "-All";
             }
