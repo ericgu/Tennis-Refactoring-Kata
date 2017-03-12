@@ -1,14 +1,14 @@
 namespace Tennis
 {
-    internal class ScoreEqual : IScorer
+    internal class ScoreDeuce : IScorer
     {
         public event ScoreHandler ScoreReady;
 
         public void Score(ScoringData scoringData, string score)
         {
-            if (score == null && scoringData.ScoreEqual)
+            if (score == null && scoringData.IsDeuce())
             {
-                score = scoringData.Player1PointsName + "-All";
+                score = "Deuce";
             }
 
             ScoreReady?.Invoke(scoringData, score);

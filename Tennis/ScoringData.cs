@@ -65,5 +65,10 @@ namespace Tennis
         {
             get { return ScoreWorkds[Points2]; }
         }
+
+        public bool IsDeuce()
+        {
+            return ScoreEqual && Points1 >= 3;
+        }
     }
 }

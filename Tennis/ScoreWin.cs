@@ -9,9 +9,13 @@ namespace Tennis
             if (score == null && scoringData.OnePlayerScoredFourOrHigher)
             {
                 if (scoringData.Player1PointAdvantage >= 2)
-                   score = "Win for " + scoringData.Player1Name;
+                {
+                    score = "Win for " + scoringData.Player1Name;
+                }
                 else if (scoringData.Player2PointAdvantage >= 2)
+                {
                     score = "Win for " + scoringData.Player2Name;
+                }
             }
 
             ScoreReady?.Invoke(scoringData, score);
