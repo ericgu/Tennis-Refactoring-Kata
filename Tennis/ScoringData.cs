@@ -20,7 +20,7 @@ namespace Tennis
 
         public string Player2Name { get; }
 
-        public bool APlayerScoredFourOrHigher
+        public bool EitherPlayerScoredFourOrHigher
         {
             get { return Points1 >= 4 || Points2 >= 4; }
         }

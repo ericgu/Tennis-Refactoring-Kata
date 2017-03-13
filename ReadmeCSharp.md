@@ -18,3 +18,6 @@ for that method to do and it knows how to do it, it does it. This is a different
 The creation is hand-written because I wanted to show the pattern without interfaces, but it would be simple to use an interface
 and then write a small method that just takes an array of all the scorers, hooks them together, and gets them started. 
 
+
+
+

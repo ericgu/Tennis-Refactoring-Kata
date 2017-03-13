@@ -6,7 +6,7 @@ namespace Tennis
 
         public void Score(ScoringData scoringData, string score)
         {
-            if (scoringData.APlayerScoredFourOrHigher)
+            if (scoringData.EitherPlayerScoredFourOrHigher)
             {
                 if (scoringData.Player1PointAdvantage == 1)
                 {
