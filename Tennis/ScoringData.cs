@@ -4,17 +4,17 @@ namespace Tennis
     {
         public static string[] ScoreWorkds = { "Love", "Fifteen", "Thirty", "Forty" };
 
-        public ScoringData(int points1, int points2, string player1Name, string player2Name)
+        public ScoringData(int player1Points, int player2Points, string player1Name, string player2Name)
         {
-            Points1 = points1;
-            Points2 = points2;
+            Player1Points = player1Points;
+            Player2Points = player2Points;
             Player1Name = player1Name;
             Player2Name = player2Name;
         }
 
-        private int Points1 { get; }
+        private int Player1Points { get; }
 
-        private int Points2 { get; }
+        private int Player2Points { get; }
 
         public string Player1Name { get; }
 
@@ -22,18 +22,18 @@ namespace Tennis
 
         public bool EitherPlayerScoredFourOrHigher
         {
-            get { return Points1 >= 4 || Points2 >= 4; }
+            get { return Player1Points >= 4 || Player2Points >= 4; }
         }
 
         public bool IsScoreEqual
         {
-            get { return Points1 == Points2; }
+            get { return Player1Points == Player2Points; }
         }
 
         public int Player1PointAdvantage
         {
             get {
-                return GetPointsAdvantage(Points1, Points2);
+                return GetPointsAdvantage(Player1Points, Player2Points);
             }
         }
 
@@ -41,10 +41,9 @@ namespace Tennis
         {
             get
             {
-                return GetPointsAdvantage(Points2, Points1);
+                return GetPointsAdvantage(Player2Points, Player1Points);
             }
         }
-
 
         private int GetPointsAdvantage(int playerPoints, int otherPlayerPoints)
         {
@@ -58,22 +57,22 @@ namespace Tennis
 
         public string Player1PointsName
         {
-            get { return ScoreWorkds[Points1]; }
+            get { return ScoreWorkds[Player1Points]; }
         }
 
         public string Player2PointsName
         {
-            get { return ScoreWorkds[Points2]; }
+            get { return ScoreWorkds[Player2Points]; }
         }
 
         public bool IsDeuce
         {
-            get { return IsScoreEqual && Points1 >= 3; }
+            get { return IsScoreEqual && Player1Points >= 3; }
         }
 
         public bool IsScoringNormal
         {
-            get { return Points1 < 4 && Points2 < 4 && !IsScoreEqual; }
+            get { return Player1Points < 4 && Player2Points < 4 && !IsScoreEqual; }
         }
     }
 }
