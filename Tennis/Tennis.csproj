@@ -47,6 +47,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ITennisGame.cs" />
     <Compile Include="ScoreAdvantage.cs" />
+    <Compile Include="ScoreDeuce_Tests.cs" />
+    <Compile Include="ScoreBase.cs" />
     <Compile Include="ScoreDeuce.cs" />
     <Compile Include="ScoreWin.cs" />
     <Compile Include="ScoreEqual.cs" />
@@ -55,6 +57,7 @@
     <Compile Include="Scorer.cs" />
     <Compile Include="ScoringData.cs" />
     <Compile Include="TennisGame1.cs" />
+    <Compile Include="ScoreAdvantage_Tests.cs" />
     <Compile Include="TennisTests.cs" />
   </ItemGroup>
   <ItemGroup>

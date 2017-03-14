@@ -1,17 +1,15 @@
 namespace Tennis
 {
-    internal class ScoreNormal
+    internal class ScoreNormal: ScoreBase
     {
-        public event ScoreHandler ScoreReady;
-
-        public void Score(ScoringData scoringData, string score)
+        public override string ScoreDirect(ScoringData scoringData)
         {
+            string score = null;
             if (scoringData.IsScoringNormal)
             {
                 score = scoringData.Player1PointsName + "-" + scoringData.Player2PointsName;
             }
-
-            ScoreReady?.Invoke(scoringData, score);
+            return score;
         }
     }
 }

@@ -1,17 +1,16 @@
 namespace Tennis
 {
-    internal class ScoreDeuce
+    internal class ScoreDeuce: ScoreBase
     {
-        public event ScoreHandler ScoreReady;
-
-        public void Score(ScoringData scoringData, string score)
+        public override string ScoreDirect(ScoringData scoringData)
         {
+            string score = null;
             if (scoringData.IsDeuce)
             {
                 score = "Deuce";
             }
 
-            ScoreReady?.Invoke(scoringData, score);
+            return score;
         }
     }
 }

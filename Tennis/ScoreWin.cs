@@ -1,11 +1,10 @@
 namespace Tennis
 {
-    internal class ScoreWin
+    internal class ScoreWin: ScoreBase
     {
-        public event ScoreHandler ScoreReady;
-
-        public void Score(ScoringData scoringData, string score)
+        public override string ScoreDirect(ScoringData scoringData)
         {
+            string score = null;
             if (scoringData.EitherPlayerScoredFourOrHigher)
             {
                 if (scoringData.Player1PointAdvantage >= 2)
@@ -17,8 +16,7 @@ namespace Tennis
                     score = "Win for " + scoringData.Player2Name;
                 }
             }
-
-            ScoreReady?.Invoke(scoringData, score);
+            return score;
         }
     }
 }
