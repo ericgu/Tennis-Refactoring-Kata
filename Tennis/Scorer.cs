@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Tennis
 {
@@ -6,9 +7,9 @@ namespace Tennis
     {
         private readonly List<ScoreBase> _scorers;
 
-        public Scorer(List<ScoreBase> scoreBases)
+        public Scorer(params ScoreBase[] scoreBases)
         {
-            _scorers = scoreBases;
+            _scorers = scoreBases.ToList();
         }
 
         public event ScoreHandler ScoreReady;
