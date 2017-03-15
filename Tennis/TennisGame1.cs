@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Tennis
 {
     class TennisGame1 : ITennisGame
@@ -25,7 +27,14 @@ namespace Tennis
         {
             string score = "Score error";
 
-            var scorer = new Scorer();
+            var scorer = new Scorer(new List<ScoreBase>
+            {
+                new ScoreDeuce(),
+                new ScoreEqual(),
+                new ScoreAdvantage(),
+                new ScoreWin(),
+                new ScoreNormal()
+            });
             scorer.ScoreReady += (scoringData, scoreParam) => score = scoreParam;
 
             scorer.Score(new ScoringData(_mScore1, _mScore2, _player1Name, _player2Name));
