@@ -10,7 +10,19 @@ namespace Tennis
             Player2Points = player2Points;
             Player1Name = player1Name;
             Player2Name = player2Name;
+            Score = null;
         }
+
+        public ScoringData(ScoringData previous, string score)
+        {
+            Player1Name = previous.Player1Name;
+            Player2Name = previous.Player2Name;
+            Player1Points = previous.Player1Points;
+            Player2Points = previous.Player2Points;
+            Score = score;
+        }
+
+        public string Score { get; }
 
         private int Player1Points { get; }
 

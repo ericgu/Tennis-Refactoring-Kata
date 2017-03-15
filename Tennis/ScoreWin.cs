@@ -1,24 +1,22 @@
 namespace Tennis
 {
-    internal class ScoreWin
+    internal static class ScoreWinClass
     {
-        public event ScoreHandler ScoreReady;
-
-        public void Score(ScoringData scoringData, string score)
+        public static ScoringData ScoreWin(this ScoringData scoringData)
         {
             if (scoringData.EitherPlayerScoredFourOrHigher)
             {
                 if (scoringData.Player1PointAdvantage >= 2)
                 {
-                    score = "Win for " + scoringData.Player1Name;
+                    return new ScoringData(scoringData, "Win for " + scoringData.Player1Name);
                 }
                 else if (scoringData.Player2PointAdvantage >= 2)
                 {
-                    score = "Win for " + scoringData.Player2Name;
+                    return new ScoringData(scoringData, "Win for " + scoringData.Player2Name);
                 }
             }
 
-            ScoreReady?.Invoke(scoringData, score);
+            return scoringData;
         }
     }
 }

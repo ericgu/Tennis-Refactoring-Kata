@@ -23,14 +23,7 @@ namespace Tennis
 
         public string GetScore()
         {
-            string score = "Score error";
-
-            var scorer = new Scorer();
-            scorer.ScoreReady += (scoringData, scoreParam) => score = scoreParam;
-
-            scorer.Score(new ScoringData(_mScore1, _mScore2, _player1Name, _player2Name));
-
-            return score;
+            return new Scorer().Score(new ScoringData(_mScore1, _mScore2, _player1Name, _player2Name));
         }
     }
 }
