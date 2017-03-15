@@ -1,6 +1,6 @@
 namespace Tennis
 {
-    internal abstract class ScoreBase
+    public abstract class ScoreBase
     {
         public event ScoreHandler ScoreReady;
 

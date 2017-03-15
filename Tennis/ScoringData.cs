@@ -1,6 +1,6 @@
 namespace Tennis
 {
-    internal class ScoringData
+    public class ScoringData
     {
         public static string[] ScoreWorkds = { "Love", "Fifteen", "Thirty", "Forty" };
 
