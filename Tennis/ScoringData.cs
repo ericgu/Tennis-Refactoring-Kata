@@ -2,7 +2,7 @@ namespace Tennis
 {
     public class ScoringData
     {
-        public static string[] ScoreWorkds = { "Love", "Fifteen", "Thirty", "Forty" };
+        public static string[] ScoreWords = { "Love", "Fifteen", "Thirty", "Forty" };
 
         public ScoringData(int player1Points, int player2Points, string player1Name, string player2Name)
         {
@@ -57,12 +57,12 @@ namespace Tennis
 
         public string Player1PointsName
         {
-            get { return ScoreWorkds[Player1Points]; }
+            get { return ScoreWords[Player1Points]; }
         }
 
         public string Player2PointsName
         {
-            get { return ScoreWorkds[Player2Points]; }
+            get { return ScoreWords[Player2Points]; }
         }
 
         public bool IsDeuce
