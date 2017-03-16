@@ -1,8 +1,8 @@
 namespace Tennis
 {
-    internal class Scorer
+    internal static class Scorer
     {
-        public string Score(ScoringData scoringData)
+        public static string ScoreIt(this ScoringData scoringData)
         {
             return scoringData.ScoreDeuce().ScoreEqual().ScoreAdvantage().ScoreNormal().ScoreWin().Score;
         }
