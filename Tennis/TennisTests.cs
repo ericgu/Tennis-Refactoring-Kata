@@ -1,6 +1,7 @@
 using System;
 using NUnit.Framework;
 
+#if fred
 namespace Tennis
 {
     [TestFixture( 0,  0, "Love-All")]
@@ -84,3 +85,4 @@ namespace Tennis
 
 }
 
+#endif

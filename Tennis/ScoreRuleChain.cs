@@ -4,7 +4,7 @@ namespace Tennis
     {
         private readonly IScoreRule[] _scoreRules;
 
-        public ScoreRuleChain(IScoreRule[] scoreRules)
+        public ScoreRuleChain(params IScoreRule[] scoreRules)
         {
             _scoreRules = scoreRules;
         }

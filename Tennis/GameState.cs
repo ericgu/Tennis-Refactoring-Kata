@@ -9,17 +9,21 @@ namespace Tennis
         public Player Player2 { get; }
 
         public GameState(string player1Name, string player2Name)
-        {
-            Player1 = new Player(player1Name);
-            Player2 = new Player(player2Name);
-
-            _scoreRuleChain = new ScoreRuleChain(new IScoreRule[]
+            : this(player1Name, player2Name, new ScoreRuleChain(new IScoreRule[]
             {
                 new ScoreRuleWin(),
                 new ScoreRuleEven(),
                 new ScoreRuleAdvantage(),
                 new ScoreRuleNormal()
-            });
+            }))
+            { }
+
+        public GameState(string player1Name, string player2Name, ScoreRuleChain scoreRuleChain)
+        {
+            Player1 = new Player(player1Name);
+            Player2 = new Player(player2Name);
+
+            _scoreRuleChain = scoreRuleChain;
         }
 
         private Player FindPlayerByName(string playerName)

@@ -49,6 +49,11 @@
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ITennisGame.cs" />
+    <Compile Include="GameStateTests.cs" />
+    <Compile Include="ScoreRuleChainTests.cs" />
+    <Compile Include="ScoreRuleNormalTests.cs" />
+    <Compile Include="ScoreRuleWinTests.cs" />
+    <Compile Include="ScoreRuleEvenTests.cs" />
     <Compile Include="ScoreRuleAdvantageTests.cs" />
     <Compile Include="ScoreRuleAdvantage.cs" />
     <Compile Include="ScoreRuleChain.cs" />
